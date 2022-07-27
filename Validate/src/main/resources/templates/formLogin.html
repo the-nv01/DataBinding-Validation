@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <form th:action="@{/form}" method="get" th:object="${user}">
+        <label>Name:</label><br>
+        <input th:field="*{name}" type="text" placeholder="Name"> <br>
+        <label>Address:</label><br>
+        <input th:field="*{address}" type="text" placeholder="Address"> <br>
+        <label>Phone:</label><br>
+        <input th:field="*{phone}" type="text" placeholder="Phone"> <br>
+
+        <div th:if="${#fields.hasAnyErrors()}">
+            <ul>
+                <li th:each="err : ${list}" th:text="${err.getDefaultMessage()}" style="color: red" />
+            </ul>
+        </div>
+        <input type="submit" value="submit">
+    </form>
+</body>
+</html>
